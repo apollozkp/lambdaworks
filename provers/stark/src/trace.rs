@@ -16,7 +16,7 @@ use rayon::prelude::{IntoParallelRefIterator, ParallelIterator};
 /// layer above the raw two-dimensional table, with functionality relevant to the
 /// STARK protocol, such as the step size (number of consecutive rows of the table)
 /// of the computation being proven.
-#[derive(Clone, Default, Debug, PartialEq, Eq)]
+#[derive(Clone, Default, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub struct TraceTable<F: IsField> {
     pub table: Table<F>,
     pub step_size: usize,
