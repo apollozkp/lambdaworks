@@ -223,7 +223,6 @@ pub extern "C" fn generate_proof_from_trace(
 
     // ## Prove
     let proof_options = ProofOptions::new_secure(SecurityLevel::Provable100Bits, 3);
-    println!("Making proof ...");
     let proof = match generate_cairo_proof(&main_trace, &pub_inputs, &proof_options) {
         Ok(p) => p,
         Err(err) => {
@@ -264,14 +263,7 @@ pub extern "C" fn verify_proof(
     // Generate options
     let proof_options = ProofOptions::new_secure(SecurityLevel::Provable100Bits, 3);
 
-    println!("Verifying ...");
     let proof_verified = verify_cairo_proof(&proof, &pub_inputs, &proof_options);
-
-    if proof_verified {
-        println!("Verification succeeded");
-    } else {
-        println!("Verification failed");
-    }
 
     proof_verified
 }
